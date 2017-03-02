@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.375, 8.5" name="ConsultorioFernandaHack">
+  <DataContextMoniker Name="/ConsultorioFernandaHackDataContext" />
+  <nestedChildShapes>
+    <classShape Id="68986513-b9f1-415c-a0a8-b652df263ce9" absoluteBounds="4.25, 1.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/Paciente" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c795a40e-eaf3-4d04-86cc-073337878270" absoluteBounds="4.265, 1.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51feb2b4-ead3-48be-9d3a-473eacf4ac8c" absoluteBounds="1, 1.125, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/Evolucao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6fbc07ac-6a1f-4b12-9326-462bd48081af" absoluteBounds="1.0150000000000001, 1.585, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 1.91429768880208); (3 : 1.91429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConsultorioFernandaHackDataContext/Paciente/Paciente_Evolucao" />
+      <nodes>
+        <classShapeMoniker Id="68986513-b9f1-415c-a0a8-b652df263ce9" />
+        <classShapeMoniker Id="51feb2b4-ead3-48be-9d3a-473eacf4ac8c" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="a2ea1115-7304-4246-acfe-ebdccbd2ed33" absoluteBounds="1, 3, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/Avaliacao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="adc86772-cea5-4b75-9846-95831fa4076b" absoluteBounds="1.0150000000000001, 3.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.25 : 3.52485270182292); (3 : 3.52485270182292)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/ConsultorioFernandaHackDataContext/Paciente/Paciente_Avaliacao" />
+      <nodes>
+        <classShapeMoniker Id="68986513-b9f1-415c-a0a8-b652df263ce9" />
+        <classShapeMoniker Id="a2ea1115-7304-4246-acfe-ebdccbd2ed33" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d27d3735-6e00-48bd-9e57-93ab6dd15e0b" absoluteBounds="9.625, 1.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/Colaborador" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65426a13-9970-46fd-b2f0-0b33aaa212fa" absoluteBounds="9.64, 1.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9c7f9ae8-7875-45dd-a580-ad4215d5f14f" absoluteBounds="6.875, 4.625, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/HistSessaoPgto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="39af0f50-ba6e-4b7e-84ce-a9a90e14b171" absoluteBounds="6.89, 5.085, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be0b4066-329c-40c3-8ab3-10e5f81a3c94" absoluteBounds="7, 1.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/Sessao" />
+      <nestedChildShapes>
+        <elementListCompartment Id="11617ab8-2f24-4710-84f7-72530f4a95d7" absoluteBounds="7.015, 1.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(7.9375 : 3.4631982421875); (7.9375 : 4.625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ConsultorioFernandaHackDataContext/Sessao/Sessao_HistSessaoPgto" />
+      <nodes>
+        <classShapeMoniker Id="be0b4066-329c-40c3-8ab3-10e5f81a3c94" />
+        <classShapeMoniker Id="9c7f9ae8-7875-45dd-a580-ad4215d5f14f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.625 : 2.48159912109375); (9 : 2.48159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ConsultorioFernandaHackDataContext/Colaborador/Colaborador_Sessao" />
+      <nodes>
+        <classShapeMoniker Id="d27d3735-6e00-48bd-9e57-93ab6dd15e0b" />
+        <classShapeMoniker Id="be0b4066-329c-40c3-8ab3-10e5f81a3c94" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.25 : 2.48159912109375); (7 : 2.48159912109375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ConsultorioFernandaHackDataContext/Paciente/Paciente_Sessao" />
+      <nodes>
+        <classShapeMoniker Id="68986513-b9f1-415c-a0a8-b652df263ce9" />
+        <classShapeMoniker Id="be0b4066-329c-40c3-8ab3-10e5f81a3c94" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="24570f31-f235-4e50-ae2c-c5648981be3e" absoluteBounds="12.125, 1.375, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/vwSessaoHistPgto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a36a435b-bf9e-4b0f-aad6-be8551d9ced8" absoluteBounds="12.14, 1.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

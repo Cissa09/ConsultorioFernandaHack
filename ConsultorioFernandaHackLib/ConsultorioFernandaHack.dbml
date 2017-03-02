@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="FernandaHackenhaar" Class="ConsultorioFernandaHackDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DEVSOL9\SQLEXPRESS;Initial Catalog=FernandaHackenhaar;Persist Security Info=True;User ID=uFernanda" SettingsObjectName="ConsultorioFernandaHackLib.Properties.Settings" SettingsPropertyName="FernandaHackenhaarConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Paciente" Member="Pacientes">
+    <Type Name="Paciente">
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefone" Type="System.String" DbType="Char(15) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefone2" Type="System.String" DbType="Char(15)" CanBeNull="true" />
+      <Column Name="RG" Type="System.String" DbType="VarChar(30) NOT NULL" CanBeNull="false" />
+      <Column Name="CPF" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DtNascimento" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ClienteDesde" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Obs" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Association Name="Paciente_Evolucao" Member="Evolucaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Evolucao" />
+      <Association Name="Paciente_Avaliacao" Member="Avaliacaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Avaliacao" />
+      <Association Name="Paciente_Sessao" Member="Sessaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Sessao" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Evolucao" Member="Evolucaos">
+    <Type Name="Evolucao">
+      <Column Name="IDEvolucao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataEvolucao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Paciente_Evolucao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avaliacao" Member="Avaliacaos">
+    <Type Name="Avaliacao">
+      <Column Name="IDAvaliacao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataAvaliacao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Paciente_Avaliacao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Colaborador" Member="Colaboradors">
+    <Type Name="Colaborador">
+      <Column Name="IDColaborador" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="DtNascimento" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
+      <Column Name="Endereco" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="RG" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CPF" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(60)" CanBeNull="true" />
+      <Column Name="Telefone1" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefone2" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PorcComissao" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Colaborador_Sessao" Member="Sessaos" ThisKey="IDColaborador" OtherKey="IDColaborador" Type="Sessao" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HistSessaoPgto" Member="HistSessaoPgtos">
+    <Type Name="HistSessaoPgto">
+      <Column Name="IDHistSessaoPgto" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDSessao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PorcComissao" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Association Name="Sessao_HistSessaoPgto" Member="Sessao" ThisKey="IDSessao" OtherKey="IDSessao" Type="Sessao" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Sessao" Member="Sessaos">
+    <Type Name="Sessao">
+      <Column Name="IDSessao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDColaborador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="DataSessao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Pago" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Sessao_HistSessaoPgto" Member="HistSessaoPgtos" ThisKey="IDSessao" OtherKey="IDSessao" Type="HistSessaoPgto" />
+      <Association Name="Colaborador_Sessao" Member="Colaborador" ThisKey="IDColaborador" OtherKey="IDColaborador" Type="Colaborador" IsForeignKey="true" />
+      <Association Name="Paciente_Sessao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vwSessaoHistPgto" Member="vwSessaoHistPgtos">
+    <Type Name="vwSessaoHistPgto">
+      <Column Name="IDSessao" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDColaborador" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DataSessao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Valor" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="Pago" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="NomePaciente" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+      <Column Name="PorcComissao" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
+      <Column Name="NomeColaborador" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
