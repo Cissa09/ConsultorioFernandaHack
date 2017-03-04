@@ -1640,9 +1640,13 @@ namespace ConsultorioFernandaHackLib
 		
 		private string _NomePaciente;
 		
+		private string _CPFPaciente;
+		
 		private decimal _PorcComissao;
 		
 		private string _NomeColaborador;
+		
+		private string _CPFColaborador;
 		
 		public vwSessaoHistPgto()
 		{
@@ -1760,6 +1764,22 @@ namespace ConsultorioFernandaHackLib
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPFPaciente", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string CPFPaciente
+		{
+			get
+			{
+				return this._CPFPaciente;
+			}
+			set
+			{
+				if ((this._CPFPaciente != value))
+				{
+					this._CPFPaciente = value;
+				}
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PorcComissao", DbType="Decimal(5,2) NOT NULL")]
 		public decimal PorcComissao
 		{
@@ -1788,6 +1808,22 @@ namespace ConsultorioFernandaHackLib
 				if ((this._NomeColaborador != value))
 				{
 					this._NomeColaborador = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPFColaborador", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CPFColaborador
+		{
+			get
+			{
+				return this._CPFColaborador;
+			}
+			set
+			{
+				if ((this._CPFColaborador != value))
+				{
+					this._CPFColaborador = value;
 				}
 			}
 		}
