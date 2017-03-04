@@ -15,6 +15,8 @@ namespace ConsultorioFernandaHack
 
         #region propriedades
 
+        public int TipoTela;
+        public int ID;
         public Form Chamador;        
 
         #endregion
@@ -86,6 +88,15 @@ namespace ConsultorioFernandaHack
             T.ShowDialog();
         }
 
+        private void Retornar()
+        {
+            if (GColaboradores.SelectedRows.Count > 0)
+            {
+                this.ID = (int)GColaboradores.SelectedRows[0].Cells["clIDColaborador"].Value;
+                this.Close();
+            }
+        }
+
         //Metodo de excluir colaboradores
         private void Excluir()
         {
@@ -107,8 +118,16 @@ namespace ConsultorioFernandaHack
 
         private void G_DoubleClick(object sender, EventArgs e)
         {
-            Editar();
-            Atualiza();
+            if (this.TipoTela == 2)
+            {
+                Retornar();
+            }
+            else
+            {
+                Editar();
+                Atualiza();
+            }
+        
         }
 
        

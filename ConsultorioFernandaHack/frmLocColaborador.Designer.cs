@@ -32,11 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLocColaborador));
             this.GColaboradores = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuNovo = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuEditar = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +48,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.clIDColaborador = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GColaboradores)).BeginInit();
             this.ctxMenu.SuspendLayout();
             this.gb.SuspendLayout();
@@ -84,7 +84,7 @@
             this.GColaboradores.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GColaboradores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GColaboradores.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
+            this.clIDColaborador,
             this.Nome,
             this.Celular,
             this.Email,
@@ -101,47 +101,6 @@
             this.GColaboradores.Size = new System.Drawing.Size(841, 289);
             this.GColaboradores.TabIndex = 22;
             this.GColaboradores.DoubleClick += new System.EventHandler(this.G_DoubleClick);
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "IDColaborador";
-            this.Codigo.HeaderText = "Código:";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Visible = false;
-            this.Codigo.Width = 60;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome:";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 200;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "Telefone1";
-            this.Celular.HeaderText = "Celular:";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            this.Celular.Width = 130;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email:";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 200;
-            // 
-            // Observacoes
-            // 
-            this.Observacoes.DataPropertyName = "PorcComissao";
-            this.Observacoes.HeaderText = "Comissao:";
-            this.Observacoes.Name = "Observacoes";
-            this.Observacoes.ReadOnly = true;
-            this.Observacoes.Width = 70;
             // 
             // ctxMenu
             // 
@@ -335,6 +294,47 @@
             this.button2.TabStop = false;
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // clIDColaborador
+            // 
+            this.clIDColaborador.DataPropertyName = "IDColaborador";
+            this.clIDColaborador.HeaderText = "Código:";
+            this.clIDColaborador.Name = "clIDColaborador";
+            this.clIDColaborador.ReadOnly = true;
+            this.clIDColaborador.Visible = false;
+            this.clIDColaborador.Width = 60;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome:";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 200;
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "Telefone1";
+            this.Celular.HeaderText = "Celular:";
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            this.Celular.Width = 130;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email:";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 200;
+            // 
+            // Observacoes
+            // 
+            this.Observacoes.DataPropertyName = "PorcComissao";
+            this.Observacoes.HeaderText = "Comissao:";
+            this.Observacoes.Name = "Observacoes";
+            this.Observacoes.ReadOnly = true;
+            this.Observacoes.Width = 70;
+            // 
             // frmLocColaborador
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -380,11 +380,11 @@
         private System.Windows.Forms.ToolStripMenuItem MenuEditar;
         private System.Windows.Forms.ToolStripMenuItem MenuExcluir;
         private System.Windows.Forms.Button btnLoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clIDColaborador;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

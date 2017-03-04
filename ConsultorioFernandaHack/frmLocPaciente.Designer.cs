@@ -32,11 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLocPaciente));
             this.GPacientes = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctxMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuNovo = new System.Windows.Forms.ToolStripMenuItem();
             this.MenuEditar = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,6 +48,11 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.clIDPaciente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Celular = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Observacoes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.GPacientes)).BeginInit();
             this.ctxMenu.SuspendLayout();
             this.gb.SuspendLayout();
@@ -84,7 +84,7 @@
             this.GPacientes.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.GPacientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.GPacientes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
+            this.clIDPaciente,
             this.Nome,
             this.Celular,
             this.Email,
@@ -101,46 +101,6 @@
             this.GPacientes.Size = new System.Drawing.Size(841, 289);
             this.GPacientes.TabIndex = 22;
             this.GPacientes.DoubleClick += new System.EventHandler(this.G_DoubleClick);
-            // 
-            // Codigo
-            // 
-            this.Codigo.DataPropertyName = "IDPaciente";
-            this.Codigo.HeaderText = "Código:";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            this.Codigo.Width = 60;
-            // 
-            // Nome
-            // 
-            this.Nome.DataPropertyName = "Nome";
-            this.Nome.HeaderText = "Nome:";
-            this.Nome.Name = "Nome";
-            this.Nome.ReadOnly = true;
-            this.Nome.Width = 150;
-            // 
-            // Celular
-            // 
-            this.Celular.DataPropertyName = "Telefone";
-            this.Celular.HeaderText = "Celular:";
-            this.Celular.Name = "Celular";
-            this.Celular.ReadOnly = true;
-            this.Celular.Width = 130;
-            // 
-            // Email
-            // 
-            this.Email.DataPropertyName = "Email";
-            this.Email.HeaderText = "Email:";
-            this.Email.Name = "Email";
-            this.Email.ReadOnly = true;
-            this.Email.Width = 200;
-            // 
-            // Observacoes
-            // 
-            this.Observacoes.DataPropertyName = "Obs";
-            this.Observacoes.HeaderText = "Observações:";
-            this.Observacoes.Name = "Observacoes";
-            this.Observacoes.ReadOnly = true;
-            this.Observacoes.Width = 300;
             // 
             // ctxMenu
             // 
@@ -334,6 +294,46 @@
             this.button2.TabStop = false;
             this.button2.UseVisualStyleBackColor = true;
             // 
+            // clIDPaciente
+            // 
+            this.clIDPaciente.DataPropertyName = "IDPaciente";
+            this.clIDPaciente.HeaderText = "Código:";
+            this.clIDPaciente.Name = "clIDPaciente";
+            this.clIDPaciente.ReadOnly = true;
+            this.clIDPaciente.Width = 60;
+            // 
+            // Nome
+            // 
+            this.Nome.DataPropertyName = "Nome";
+            this.Nome.HeaderText = "Nome:";
+            this.Nome.Name = "Nome";
+            this.Nome.ReadOnly = true;
+            this.Nome.Width = 150;
+            // 
+            // Celular
+            // 
+            this.Celular.DataPropertyName = "Telefone";
+            this.Celular.HeaderText = "Celular:";
+            this.Celular.Name = "Celular";
+            this.Celular.ReadOnly = true;
+            this.Celular.Width = 130;
+            // 
+            // Email
+            // 
+            this.Email.DataPropertyName = "Email";
+            this.Email.HeaderText = "Email:";
+            this.Email.Name = "Email";
+            this.Email.ReadOnly = true;
+            this.Email.Width = 200;
+            // 
+            // Observacoes
+            // 
+            this.Observacoes.DataPropertyName = "Obs";
+            this.Observacoes.HeaderText = "Observações:";
+            this.Observacoes.Name = "Observacoes";
+            this.Observacoes.ReadOnly = true;
+            this.Observacoes.Width = 300;
+            // 
             // frmLocPaciente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -379,11 +379,11 @@
         private System.Windows.Forms.ToolStripMenuItem MenuEditar;
         private System.Windows.Forms.ToolStripMenuItem MenuExcluir;
         private System.Windows.Forms.Button btnLoc;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn clIDPaciente;
         private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
         private System.Windows.Forms.DataGridViewTextBoxColumn Celular;
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Observacoes;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
