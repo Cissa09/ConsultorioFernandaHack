@@ -41,8 +41,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.dtAte = new System.Windows.Forms.DateTimePicker();
             this.dtDe = new System.Windows.Forms.DateTimePicker();
-            this.lblPaciente = new System.Windows.Forms.Label();
-            this.lblColaborador = new System.Windows.Forms.Label();
+            this.lklPaciente = new System.Windows.Forms.LinkLabel();
+            this.lklColaborador = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.gbGeral.SuspendLayout();
             this.SuspendLayout();
@@ -92,14 +92,14 @@
             // 
             // gbGeral
             // 
+            this.gbGeral.Controls.Add(this.lklPaciente);
+            this.gbGeral.Controls.Add(this.lklColaborador);
             this.gbGeral.Controls.Add(this.cmbColaborador);
             this.gbGeral.Controls.Add(this.cmbPaciente);
             this.gbGeral.Controls.Add(this.label8);
             this.gbGeral.Controls.Add(this.label9);
             this.gbGeral.Controls.Add(this.dtAte);
             this.gbGeral.Controls.Add(this.dtDe);
-            this.gbGeral.Controls.Add(this.lblPaciente);
-            this.gbGeral.Controls.Add(this.lblColaborador);
             this.gbGeral.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbGeral.Location = new System.Drawing.Point(12, 9);
             this.gbGeral.Name = "gbGeral";
@@ -110,7 +110,10 @@
             // 
             // cmbColaborador
             // 
+            this.cmbColaborador.BackColor = System.Drawing.Color.Silver;
             this.cmbColaborador.DisplayMember = "Nome";
+            this.cmbColaborador.Enabled = false;
+            this.cmbColaborador.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbColaborador.FormattingEnabled = true;
             this.cmbColaborador.Location = new System.Drawing.Point(97, 75);
             this.cmbColaborador.Name = "cmbColaborador";
@@ -120,7 +123,10 @@
             // 
             // cmbPaciente
             // 
+            this.cmbPaciente.BackColor = System.Drawing.Color.Silver;
             this.cmbPaciente.DisplayMember = "Nome";
+            this.cmbPaciente.Enabled = false;
+            this.cmbPaciente.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPaciente.FormattingEnabled = true;
             this.cmbPaciente.Location = new System.Drawing.Point(97, 47);
             this.cmbPaciente.Name = "cmbPaciente";
@@ -170,27 +176,27 @@
             this.dtDe.Size = new System.Drawing.Size(103, 21);
             this.dtDe.TabIndex = 3;
             // 
-            // lblPaciente
+            // lklPaciente
             // 
-            this.lblPaciente.AutoSize = true;
-            this.lblPaciente.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPaciente.ForeColor = System.Drawing.Color.Black;
-            this.lblPaciente.Location = new System.Drawing.Point(8, 50);
-            this.lblPaciente.Name = "lblPaciente";
-            this.lblPaciente.Size = new System.Drawing.Size(60, 13);
-            this.lblPaciente.TabIndex = 6;
-            this.lblPaciente.Text = "Paciente:";
+            this.lklPaciente.AutoSize = true;
+            this.lklPaciente.Location = new System.Drawing.Point(11, 50);
+            this.lklPaciente.Name = "lklPaciente";
+            this.lklPaciente.Size = new System.Drawing.Size(55, 13);
+            this.lklPaciente.TabIndex = 34;
+            this.lklPaciente.TabStop = true;
+            this.lklPaciente.Text = "Paciente";
+            this.lklPaciente.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklPaciente_LinkClicked);
             // 
-            // lblColaborador
+            // lklColaborador
             // 
-            this.lblColaborador.AutoSize = true;
-            this.lblColaborador.Font = new System.Drawing.Font("Verdana", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblColaborador.ForeColor = System.Drawing.Color.Black;
-            this.lblColaborador.Location = new System.Drawing.Point(7, 77);
-            this.lblColaborador.Name = "lblColaborador";
-            this.lblColaborador.Size = new System.Drawing.Size(83, 13);
-            this.lblColaborador.TabIndex = 8;
-            this.lblColaborador.Text = "Colaborador:";
+            this.lklColaborador.AutoSize = true;
+            this.lklColaborador.Location = new System.Drawing.Point(11, 78);
+            this.lklColaborador.Name = "lklColaborador";
+            this.lklColaborador.Size = new System.Drawing.Size(78, 13);
+            this.lklColaborador.TabIndex = 33;
+            this.lklColaborador.TabStop = true;
+            this.lklColaborador.Text = "Colaborador";
+            this.lklColaborador.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklColaborador_LinkClicked);
             // 
             // frmFiltroReciboSessaoPgto
             // 
@@ -224,9 +230,9 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dtAte;
         private System.Windows.Forms.DateTimePicker dtDe;
-        private System.Windows.Forms.Label lblPaciente;
-        private System.Windows.Forms.Label lblColaborador;
         private System.Windows.Forms.ComboBox cmbColaborador;
         private System.Windows.Forms.ComboBox cmbPaciente;
+        private System.Windows.Forms.LinkLabel lklPaciente;
+        private System.Windows.Forms.LinkLabel lklColaborador;
     }
 }

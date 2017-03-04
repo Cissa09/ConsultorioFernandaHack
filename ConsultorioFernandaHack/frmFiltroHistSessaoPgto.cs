@@ -99,5 +99,51 @@ namespace ConsultorioFernandaHack
             //Abastece o combo
             cmbColaborador.DataSource = ListColaborador;
         }
+
+        private void lklPaciente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            BuscaPaciente();
+        }
+
+        private void lklColaborador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            BuscaColaborador();
+        }
+
+        private void BuscaColaborador()
+        {
+            try
+            {
+                frmLocColaborador T = new frmLocColaborador();
+                T.TipoTela = 2;
+                T.ShowDialog();
+
+                int IDColaborador = T.ID > 0 ? T.ID : (int)cmbColaborador.SelectedValue;
+                CArregaComboColaborador();
+                cmbColaborador.SelectedValue = IDColaborador;
+            }
+            catch
+            {
+                cmbColaborador.SelectedValue = 0;
+            }
+        }
+
+        private void BuscaPaciente()
+        {
+            try
+            {
+                frmLocPaciente T = new frmLocPaciente();
+                T.TipoTela = 2;
+                T.ShowDialog();
+
+                int IDPaciente = T.ID > 0 ? T.ID : (int)cmbPaciente.SelectedValue;
+                CArregaComboPaciente();
+                cmbPaciente.SelectedValue = IDPaciente;
+            }
+            catch
+            {
+                cmbPaciente.SelectedValue = 0;
+            }
+        }
     }
 }

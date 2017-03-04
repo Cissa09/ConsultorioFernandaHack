@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.375, 8.5" name="ConsultorioFernandaHack">
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 14.25, 8.5" name="ConsultorioFernandaHack">
   <DataContextMoniker Name="/ConsultorioFernandaHackDataContext" />
   <nestedChildShapes>
     <classShape Id="68986513-b9f1-415c-a0a8-b652df263ce9" absoluteBounds="4.25, 1.125, 2, 2.9247054036458331">
@@ -73,10 +73,10 @@
         <classShapeMoniker Id="be0b4066-329c-40c3-8ab3-10e5f81a3c94" />
       </nodes>
     </associationConnector>
-    <classShape Id="24570f31-f235-4e50-ae2c-c5648981be3e" absoluteBounds="12.125, 1.375, 2, 2.5401025390625">
+    <classShape Id="660ba3af-aafb-4930-8c90-e8601888eec8" absoluteBounds="12, 1.25, 2, 2.9247054036458331">
       <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/vwSessaoHistPgto" />
       <nestedChildShapes>
-        <elementListCompartment Id="a36a435b-bf9e-4b0f-aad6-be8551d9ced8" absoluteBounds="12.14, 1.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="3c0ad908-cac3-42e3-b9bd-72a6e546b71c" absoluteBounds="12.015, 1.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
