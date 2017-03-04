@@ -50,6 +50,7 @@
             this.btnSessao = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnColaborador = new System.Windows.Forms.Button();
+            this.MainMenuRptRecibo = new System.Windows.Forms.ToolStripMenuItem();
             MenuAdministrativo = new System.Windows.Forms.MenuStrip();
             MenuAdministrativo.SuspendLayout();
             this.SuspendLayout();
@@ -185,7 +186,8 @@
             // 
             this.MenuRelatorio.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MainMenuRptComissoes,
-            this.evoluToolStripMenuItem});
+            this.evoluToolStripMenuItem,
+            this.MainMenuRptRecibo});
             this.MenuRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MenuRelatorio.ForeColor = System.Drawing.Color.White;
             this.MenuRelatorio.Name = "MenuRelatorio";
@@ -267,6 +269,14 @@
             this.btnColaborador.UseVisualStyleBackColor = false;
             this.btnColaborador.Click += new System.EventHandler(this.btnColaborador_Click);
             // 
+            // MainMenuRptRecibo
+            // 
+            this.MainMenuRptRecibo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MainMenuRptRecibo.Name = "MainMenuRptRecibo";
+            this.MainMenuRptRecibo.Size = new System.Drawing.Size(152, 22);
+            this.MainMenuRptRecibo.Text = "Recibo";
+            this.MainMenuRptRecibo.Click += new System.EventHandler(this.MainMenuRptRecibo_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -317,6 +327,7 @@
         private System.Windows.Forms.ToolStripMenuItem MenuSessao;
         private System.Windows.Forms.ToolStripMenuItem MenuLocPacientes;
         private System.Windows.Forms.ToolStripMenuItem MenuLocSessao;
+        private System.Windows.Forms.ToolStripMenuItem MainMenuRptRecibo;
     }
 }
 

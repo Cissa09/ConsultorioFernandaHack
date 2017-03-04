@@ -96,5 +96,11 @@ namespace ConsultorioFernandaHack
         {
             this.Close();
         }
+
+        private void MainMenuRptRecibo_Click(object sender, EventArgs e)
+        {
+            frmFiltroReciboSessaoPgto T = new frmFiltroReciboSessaoPgto();
+            T.Show();
+        }
     }
 }

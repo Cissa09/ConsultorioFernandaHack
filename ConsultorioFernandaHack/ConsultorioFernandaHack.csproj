@@ -84,6 +84,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmFiltroReciboSessaoPgto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmFiltroReciboSessaoPgto.Designer.cs">
+      <DependentUpon>frmFiltroReciboSessaoPgto.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmFiltroHistSessaoPgto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmFiltroReciboSessaoPgto.resx">
+      <DependentUpon>frmFiltroReciboSessaoPgto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmFiltroHistSessaoPgto.resx">
       <DependentUpon>frmFiltroHistSessaoPgto.cs</DependentUpon>
     </EmbeddedResource>
