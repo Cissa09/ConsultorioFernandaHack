@@ -15,11 +15,11 @@ namespace ConsultorioFernandaHack
     public partial class frmFiltroReciboSessaoPgto : Form
     {
         #region Propriedades   
-        
+
         public int ID;
         public DataGridViewRow Linha;
         public ConsultorioFernandaHackLib.PacienteDAL xPaciente;
-        public ConsultorioFernandaHackLib.ColaboradorDAL xColaborador;              
+        public ConsultorioFernandaHackLib.ColaboradorDAL xColaborador;
         private ConsultorioFernandaHackLib.Relatorios.rptComprovantePgto rpt;
         private frmCry Te;
 
@@ -46,24 +46,33 @@ namespace ConsultorioFernandaHack
         private void btnGerar_Click(object sender, EventArgs e)
         {
             try
-            {                
-                rpt = new ConsultorioFernandaHackLib.Relatorios.rptComprovantePgto();
-
-                var sql = ConsultorioFernandaHackLib.RelatorioDAL.RelatorioComissoes(dtDe.Value, dtAte.Value, (int)cmbPaciente.SelectedValue, (int)cmbColaborador.SelectedValue);
-               
-                if (sql.Count() == 0)
+            {
+                if (!((int)cmbPaciente.SelectedValue == 0 || (int)cmbColaborador.SelectedValue == 0))
                 {
-                    ConsultorioFernandaHackLib.CUtil.MsgErro("Relatório vazio!");
-                    return;
+                    rpt = new ConsultorioFernandaHackLib.Relatorios.rptComprovantePgto();
+
+                    var sql = ConsultorioFernandaHackLib.RelatorioDAL.RelatorioComissoes(dtDe.Value, dtAte.Value, (int)cmbPaciente.SelectedValue, (int)cmbColaborador.SelectedValue);
+
+                    if (sql.Count() == 0)
+                    {
+                        ConsultorioFernandaHackLib.CUtil.MsgErro("Relatório vazio!");
+                        return;
+                    }
+
+                    rpt.SetDataSource(sql);
+
+                    Te = new frmCry();
+                    Te.Text = "Relatório de Comissões";
+                    Te.Cry.ReportSource = rpt;
+                    Te.Cry.SelectionFormula = "1 = 1";
+                    Te.Show();
+                }
+                else
+                {
+                    ConsultorioFernandaHackLib.CUtil.MsgErro("Para o relatório de recibo é necessário selecionar um paciente e um colaborador!");
                 }
 
-                rpt.SetDataSource(sql);
-              
-                Te = new frmCry();
-                Te.Text = "Relatório de Comissões";
-                Te.Cry.ReportSource = rpt;
-                Te.Cry.SelectionFormula = "1 = 1";
-                Te.Show();                              
+             
             }
             catch (Exception ex)
             {
@@ -79,7 +88,7 @@ namespace ConsultorioFernandaHack
             //Passo o resultado do banco para a lista
             ListPaciente = (ConsultorioFernandaHackLib.PacienteDAL.BuscaPaciente());
             //Cria um pra selecione e insere na lista pra ficar bonito
-            xPaciente = new ConsultorioFernandaHackLib.PacienteDAL(0, "<Todos>");
+            xPaciente = new ConsultorioFernandaHackLib.PacienteDAL(0, "<Selecione>");
             //Adicionar o seleciona na lista
             ListPaciente.Insert(0, xPaciente.Paciente);
             //Abastece o combo
@@ -93,11 +102,57 @@ namespace ConsultorioFernandaHack
             //Passo o resultado do banco para a lista
             ListColaborador = (ConsultorioFernandaHackLib.ColaboradorDAL.BuscaColaborador());
             //Cria um pra selecione e insere na lista pra ficar bonito
-            xColaborador = new ConsultorioFernandaHackLib.ColaboradorDAL(0, "<Todos>");
+            xColaborador = new ConsultorioFernandaHackLib.ColaboradorDAL(0, "<Selecione>");
             //Adicionar o seleciona na lista
             ListColaborador.Insert(0, xColaborador.Colaborador);
             //Abastece o combo
             cmbColaborador.DataSource = ListColaborador;
+        }
+
+        private void lklPaciente_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            BuscaPaciente();
+        }
+
+        private void lklColaborador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            BuscaColaborador();
+        }
+
+        private void BuscaColaborador()
+        {
+            try
+            {
+                frmLocColaborador T = new frmLocColaborador();
+                T.TipoTela = 2;
+                T.ShowDialog();
+
+                int IDColaborador = T.ID > 0 ? T.ID : (int)cmbColaborador.SelectedValue;
+                CArregaComboColaborador();
+                cmbColaborador.SelectedValue = IDColaborador;
+            }
+            catch
+            {
+                cmbColaborador.SelectedValue = 0;
+            }
+        }
+
+        private void BuscaPaciente()
+        {
+            try
+            {
+                frmLocPaciente T = new frmLocPaciente();
+                T.TipoTela = 2;
+                T.ShowDialog();
+
+                int IDPaciente = T.ID > 0 ? T.ID : (int)cmbPaciente.SelectedValue;
+                CArregaComboPaciente();
+                cmbPaciente.SelectedValue = IDPaciente;
+            }
+            catch
+            {
+                cmbPaciente.SelectedValue = 0;
+            }
         }
     }
 }
