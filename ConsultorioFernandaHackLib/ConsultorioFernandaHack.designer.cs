@@ -51,7 +51,7 @@ namespace ConsultorioFernandaHackLib
     #endregion
 		
 		public ConsultorioFernandaHackDataContext() : 
-				base(global::ConsultorioFernandaHackLib.Properties.Settings.Default.FernandaHackenhaarConnectionString, mappingSource)
+				base(global::ConsultorioFernandaHackLib.Properties.Settings.Default.FernandaHackenhaarConnectionStringProd, mappingSource)
 		{
 			OnCreated();
 		}
