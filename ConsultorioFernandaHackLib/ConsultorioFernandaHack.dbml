@@ -13,27 +13,9 @@
       <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
       <Column Name="ClienteDesde" Type="System.DateTime" DbType="SmallDateTime" CanBeNull="true" />
       <Column Name="Obs" Type="System.String" DbType="VarChar(400)" CanBeNull="true" />
+      <Association Name="Paciente_Sessao" Member="Sessaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Sessao" />
       <Association Name="Paciente_Evolucao" Member="Evolucaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Evolucao" />
       <Association Name="Paciente_Avaliacao" Member="Avaliacaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Avaliacao" />
-      <Association Name="Paciente_Sessao" Member="Sessaos" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Sessao" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Evolucao" Member="Evolucaos">
-    <Type Name="Evolucao">
-      <Column Name="IDEvolucao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DataEvolucao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Descricao" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Paciente_Evolucao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.Avaliacao" Member="Avaliacaos">
-    <Type Name="Avaliacao">
-      <Column Name="IDAvaliacao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="DataAvaliacao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
-      <Column Name="Descricao" Type="System.String" DbType="VarChar(500) NOT NULL" CanBeNull="false" />
-      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Association Name="Paciente_Avaliacao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Colaborador" Member="Colaboradors">
@@ -85,6 +67,24 @@
       <Column Name="PorcComissao" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
       <Column Name="NomeColaborador" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="CPFColaborador" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Evolucao" Member="Evolucaos">
+    <Type Name="Evolucao">
+      <Column Name="IDEvolucao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataEvolucao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Paciente_Evolucao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Avaliacao" Member="Avaliacaos">
+    <Type Name="Avaliacao">
+      <Column Name="IDAvaliacao" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DataAvaliacao" Type="System.DateTime" DbType="SmallDateTime NOT NULL" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="IDPaciente" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Paciente_Avaliacao" Member="Paciente" ThisKey="IDPaciente" OtherKey="IDPaciente" Type="Paciente" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

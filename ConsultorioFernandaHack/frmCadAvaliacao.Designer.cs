@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadAvaliacao));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnSalvarEvolucao = new System.Windows.Forms.Button();
+            this.btnSalvarAvaliacao = new System.Windows.Forms.Button();
             this.gbDadosAvaliacao = new System.Windows.Forms.GroupBox();
             this.btnBandeiraAzul = new System.Windows.Forms.Button();
             this.txtDescricao = new System.Windows.Forms.TextBox();
@@ -67,24 +67,24 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "SALVAR";
             // 
-            // btnSalvarEvolucao
+            // btnSalvarAvaliacao
             // 
-            this.btnSalvarEvolucao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSalvarEvolucao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(165)))), ((int)(((byte)(114)))));
-            this.btnSalvarEvolucao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvarEvolucao.BackgroundImage")));
-            this.btnSalvarEvolucao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSalvarEvolucao.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSalvarEvolucao.FlatAppearance.BorderSize = 0;
-            this.btnSalvarEvolucao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.btnSalvarEvolucao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnSalvarEvolucao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvarEvolucao.Location = new System.Drawing.Point(525, 315);
-            this.btnSalvarEvolucao.Name = "btnSalvarEvolucao";
-            this.btnSalvarEvolucao.Size = new System.Drawing.Size(39, 42);
-            this.btnSalvarEvolucao.TabIndex = 5;
-            this.toolTipAvaliacao.SetToolTip(this.btnSalvarEvolucao, "Salvar Avaliação");
-            this.btnSalvarEvolucao.UseVisualStyleBackColor = false;
-            this.btnSalvarEvolucao.Click += new System.EventHandler(this.btnSalvarEvolucao_Click);
+            this.btnSalvarAvaliacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSalvarAvaliacao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(165)))), ((int)(((byte)(114)))));
+            this.btnSalvarAvaliacao.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalvarAvaliacao.BackgroundImage")));
+            this.btnSalvarAvaliacao.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSalvarAvaliacao.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSalvarAvaliacao.FlatAppearance.BorderSize = 0;
+            this.btnSalvarAvaliacao.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnSalvarAvaliacao.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnSalvarAvaliacao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSalvarAvaliacao.Location = new System.Drawing.Point(525, 315);
+            this.btnSalvarAvaliacao.Name = "btnSalvarAvaliacao";
+            this.btnSalvarAvaliacao.Size = new System.Drawing.Size(39, 42);
+            this.btnSalvarAvaliacao.TabIndex = 5;
+            this.toolTipAvaliacao.SetToolTip(this.btnSalvarAvaliacao, "Salvar Avaliação");
+            this.btnSalvarAvaliacao.UseVisualStyleBackColor = false;
+            this.btnSalvarAvaliacao.Click += new System.EventHandler(this.btnSalvarAvaliacao_Click);
             // 
             // gbDadosAvaliacao
             // 
@@ -165,14 +165,14 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(592, 375);
             this.Controls.Add(this.gbDadosAvaliacao);
-            this.Controls.Add(this.btnSalvarEvolucao);
+            this.Controls.Add(this.btnSalvarAvaliacao);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmCadAvaliacao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CADASTRO DE AVALIAÇÂO";
-            this.Load += new System.EventHandler(this.frmCadEvolucao_Load);
+            this.Load += new System.EventHandler(this.frmCadAvaliacao_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.gbDadosAvaliacao.ResumeLayout(false);
@@ -184,7 +184,7 @@
         #endregion
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnSalvarEvolucao;
+        private System.Windows.Forms.Button btnSalvarAvaliacao;
         private System.Windows.Forms.GroupBox gbDadosAvaliacao;
         private System.Windows.Forms.Button btnBandeiraAzul;
         private System.Windows.Forms.TextBox txtDescricao;

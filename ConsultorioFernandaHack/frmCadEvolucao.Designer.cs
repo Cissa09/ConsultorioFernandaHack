@@ -94,11 +94,12 @@
             this.gbDadosPaciente.Controls.Add(this.dtCadastro);
             this.gbDadosPaciente.Controls.Add(this.lblDtCadastro);
             this.gbDadosPaciente.Font = new System.Drawing.Font("Verdana", 9F);
-            this.gbDadosPaciente.Location = new System.Drawing.Point(12, 12);
+            this.gbDadosPaciente.Location = new System.Drawing.Point(12, 7);
             this.gbDadosPaciente.Name = "gbDadosPaciente";
             this.gbDadosPaciente.Size = new System.Drawing.Size(568, 294);
             this.gbDadosPaciente.TabIndex = 6;
             this.gbDadosPaciente.TabStop = false;
+            this.gbDadosPaciente.Text = "Evolução";
             // 
             // btnBandeiraAzul
             // 
@@ -130,7 +131,7 @@
             this.lblObsEvolucao.AutoSize = true;
             this.lblObsEvolucao.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblObsEvolucao.ForeColor = System.Drawing.Color.Black;
-            this.lblObsEvolucao.Location = new System.Drawing.Point(-1, 46);
+            this.lblObsEvolucao.Location = new System.Drawing.Point(16, 46);
             this.lblObsEvolucao.Name = "lblObsEvolucao";
             this.lblObsEvolucao.Size = new System.Drawing.Size(72, 14);
             this.lblObsEvolucao.TabIndex = 3;
@@ -151,7 +152,7 @@
             this.lblDtCadastro.AutoSize = true;
             this.lblDtCadastro.Font = new System.Drawing.Font("Verdana", 9F);
             this.lblDtCadastro.ForeColor = System.Drawing.Color.Black;
-            this.lblDtCadastro.Location = new System.Drawing.Point(1, 21);
+            this.lblDtCadastro.Location = new System.Drawing.Point(15, 21);
             this.lblDtCadastro.Name = "lblDtCadastro";
             this.lblDtCadastro.Size = new System.Drawing.Size(42, 14);
             this.lblDtCadastro.TabIndex = 1;

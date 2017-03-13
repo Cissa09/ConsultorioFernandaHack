@@ -33,12 +33,6 @@ namespace ConsultorioFernandaHackLib
     partial void InsertPaciente(Paciente instance);
     partial void UpdatePaciente(Paciente instance);
     partial void DeletePaciente(Paciente instance);
-    partial void InsertEvolucao(Evolucao instance);
-    partial void UpdateEvolucao(Evolucao instance);
-    partial void DeleteEvolucao(Evolucao instance);
-    partial void InsertAvaliacao(Avaliacao instance);
-    partial void UpdateAvaliacao(Avaliacao instance);
-    partial void DeleteAvaliacao(Avaliacao instance);
     partial void InsertColaborador(Colaborador instance);
     partial void UpdateColaborador(Colaborador instance);
     partial void DeleteColaborador(Colaborador instance);
@@ -48,10 +42,16 @@ namespace ConsultorioFernandaHackLib
     partial void InsertSessao(Sessao instance);
     partial void UpdateSessao(Sessao instance);
     partial void DeleteSessao(Sessao instance);
+    partial void InsertEvolucao(Evolucao instance);
+    partial void UpdateEvolucao(Evolucao instance);
+    partial void DeleteEvolucao(Evolucao instance);
+    partial void InsertAvaliacao(Avaliacao instance);
+    partial void UpdateAvaliacao(Avaliacao instance);
+    partial void DeleteAvaliacao(Avaliacao instance);
     #endregion
 		
 		public ConsultorioFernandaHackDataContext() : 
-				base(global::ConsultorioFernandaHackLib.Properties.Settings.Default.FernandaHackenhaarConnectionStringProd, mappingSource)
+				base(global::ConsultorioFernandaHackLib.Properties.Settings.Default.FernandaHackenhaarConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -88,22 +88,6 @@ namespace ConsultorioFernandaHackLib
 			}
 		}
 		
-		public System.Data.Linq.Table<Evolucao> Evolucaos
-		{
-			get
-			{
-				return this.GetTable<Evolucao>();
-			}
-		}
-		
-		public System.Data.Linq.Table<Avaliacao> Avaliacaos
-		{
-			get
-			{
-				return this.GetTable<Avaliacao>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Colaborador> Colaboradors
 		{
 			get
@@ -133,6 +117,22 @@ namespace ConsultorioFernandaHackLib
 			get
 			{
 				return this.GetTable<vwSessaoHistPgto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Evolucao> Evolucaos
+		{
+			get
+			{
+				return this.GetTable<Evolucao>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Avaliacao> Avaliacaos
+		{
+			get
+			{
+				return this.GetTable<Avaliacao>();
 			}
 		}
 	}
@@ -165,11 +165,11 @@ namespace ConsultorioFernandaHackLib
 		
 		private string _Obs;
 		
+		private EntitySet<Sessao> _Sessaos;
+		
 		private EntitySet<Evolucao> _Evolucaos;
 		
 		private EntitySet<Avaliacao> _Avaliacaos;
-		
-		private EntitySet<Sessao> _Sessaos;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -201,9 +201,9 @@ namespace ConsultorioFernandaHackLib
 		
 		public Paciente()
 		{
+			this._Sessaos = new EntitySet<Sessao>(new Action<Sessao>(this.attach_Sessaos), new Action<Sessao>(this.detach_Sessaos));
 			this._Evolucaos = new EntitySet<Evolucao>(new Action<Evolucao>(this.attach_Evolucaos), new Action<Evolucao>(this.detach_Evolucaos));
 			this._Avaliacaos = new EntitySet<Avaliacao>(new Action<Avaliacao>(this.attach_Avaliacaos), new Action<Avaliacao>(this.detach_Avaliacaos));
-			this._Sessaos = new EntitySet<Sessao>(new Action<Sessao>(this.attach_Sessaos), new Action<Sessao>(this.detach_Sessaos));
 			OnCreated();
 		}
 		
@@ -427,6 +427,19 @@ namespace ConsultorioFernandaHackLib
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Sessao", Storage="_Sessaos", ThisKey="IDPaciente", OtherKey="IDPaciente")]
+		public EntitySet<Sessao> Sessaos
+		{
+			get
+			{
+				return this._Sessaos;
+			}
+			set
+			{
+				this._Sessaos.Assign(value);
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Evolucao", Storage="_Evolucaos", ThisKey="IDPaciente", OtherKey="IDPaciente")]
 		public EntitySet<Evolucao> Evolucaos
 		{
@@ -453,19 +466,6 @@ namespace ConsultorioFernandaHackLib
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Sessao", Storage="_Sessaos", ThisKey="IDPaciente", OtherKey="IDPaciente")]
-		public EntitySet<Sessao> Sessaos
-		{
-			get
-			{
-				return this._Sessaos;
-			}
-			set
-			{
-				this._Sessaos.Assign(value);
-			}
-		}
-		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -484,6 +484,18 @@ namespace ConsultorioFernandaHackLib
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+		
+		private void attach_Sessaos(Sessao entity)
+		{
+			this.SendPropertyChanging();
+			entity.Paciente = this;
+		}
+		
+		private void detach_Sessaos(Sessao entity)
+		{
+			this.SendPropertyChanging();
+			entity.Paciente = null;
 		}
 		
 		private void attach_Evolucaos(Evolucao entity)
@@ -508,368 +520,6 @@ namespace ConsultorioFernandaHackLib
 		{
 			this.SendPropertyChanging();
 			entity.Paciente = null;
-		}
-		
-		private void attach_Sessaos(Sessao entity)
-		{
-			this.SendPropertyChanging();
-			entity.Paciente = this;
-		}
-		
-		private void detach_Sessaos(Sessao entity)
-		{
-			this.SendPropertyChanging();
-			entity.Paciente = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evolucao")]
-	public partial class Evolucao : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDEvolucao;
-		
-		private System.DateTime _DataEvolucao;
-		
-		private string _Descricao;
-		
-		private int _IDPaciente;
-		
-		private EntityRef<Paciente> _Paciente;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDEvolucaoChanging(int value);
-    partial void OnIDEvolucaoChanged();
-    partial void OnDataEvolucaoChanging(System.DateTime value);
-    partial void OnDataEvolucaoChanged();
-    partial void OnDescricaoChanging(string value);
-    partial void OnDescricaoChanged();
-    partial void OnIDPacienteChanging(int value);
-    partial void OnIDPacienteChanged();
-    #endregion
-		
-		public Evolucao()
-		{
-			this._Paciente = default(EntityRef<Paciente>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDEvolucao", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IDEvolucao
-		{
-			get
-			{
-				return this._IDEvolucao;
-			}
-			set
-			{
-				if ((this._IDEvolucao != value))
-				{
-					this.OnIDEvolucaoChanging(value);
-					this.SendPropertyChanging();
-					this._IDEvolucao = value;
-					this.SendPropertyChanged("IDEvolucao");
-					this.OnIDEvolucaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataEvolucao", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime DataEvolucao
-		{
-			get
-			{
-				return this._DataEvolucao;
-			}
-			set
-			{
-				if ((this._DataEvolucao != value))
-				{
-					this.OnDataEvolucaoChanging(value);
-					this.SendPropertyChanging();
-					this._DataEvolucao = value;
-					this.SendPropertyChanged("DataEvolucao");
-					this.OnDataEvolucaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
-		public string Descricao
-		{
-			get
-			{
-				return this._Descricao;
-			}
-			set
-			{
-				if ((this._Descricao != value))
-				{
-					this.OnDescricaoChanging(value);
-					this.SendPropertyChanging();
-					this._Descricao = value;
-					this.SendPropertyChanged("Descricao");
-					this.OnDescricaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDPaciente", DbType="Int NOT NULL")]
-		public int IDPaciente
-		{
-			get
-			{
-				return this._IDPaciente;
-			}
-			set
-			{
-				if ((this._IDPaciente != value))
-				{
-					if (this._Paciente.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDPacienteChanging(value);
-					this.SendPropertyChanging();
-					this._IDPaciente = value;
-					this.SendPropertyChanged("IDPaciente");
-					this.OnIDPacienteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Evolucao", Storage="_Paciente", ThisKey="IDPaciente", OtherKey="IDPaciente", IsForeignKey=true)]
-		public Paciente Paciente
-		{
-			get
-			{
-				return this._Paciente.Entity;
-			}
-			set
-			{
-				Paciente previousValue = this._Paciente.Entity;
-				if (((previousValue != value) 
-							|| (this._Paciente.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Paciente.Entity = null;
-						previousValue.Evolucaos.Remove(this);
-					}
-					this._Paciente.Entity = value;
-					if ((value != null))
-					{
-						value.Evolucaos.Add(this);
-						this._IDPaciente = value.IDPaciente;
-					}
-					else
-					{
-						this._IDPaciente = default(int);
-					}
-					this.SendPropertyChanged("Paciente");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Avaliacao")]
-	public partial class Avaliacao : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _IDAvaliacao;
-		
-		private System.DateTime _DataAvaliacao;
-		
-		private string _Descricao;
-		
-		private int _IDPaciente;
-		
-		private EntityRef<Paciente> _Paciente;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIDAvaliacaoChanging(int value);
-    partial void OnIDAvaliacaoChanged();
-    partial void OnDataAvaliacaoChanging(System.DateTime value);
-    partial void OnDataAvaliacaoChanged();
-    partial void OnDescricaoChanging(string value);
-    partial void OnDescricaoChanged();
-    partial void OnIDPacienteChanging(int value);
-    partial void OnIDPacienteChanged();
-    #endregion
-		
-		public Avaliacao()
-		{
-			this._Paciente = default(EntityRef<Paciente>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDAvaliacao", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int IDAvaliacao
-		{
-			get
-			{
-				return this._IDAvaliacao;
-			}
-			set
-			{
-				if ((this._IDAvaliacao != value))
-				{
-					this.OnIDAvaliacaoChanging(value);
-					this.SendPropertyChanging();
-					this._IDAvaliacao = value;
-					this.SendPropertyChanged("IDAvaliacao");
-					this.OnIDAvaliacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataAvaliacao", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime DataAvaliacao
-		{
-			get
-			{
-				return this._DataAvaliacao;
-			}
-			set
-			{
-				if ((this._DataAvaliacao != value))
-				{
-					this.OnDataAvaliacaoChanging(value);
-					this.SendPropertyChanging();
-					this._DataAvaliacao = value;
-					this.SendPropertyChanged("DataAvaliacao");
-					this.OnDataAvaliacaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="VarChar(500) NOT NULL", CanBeNull=false)]
-		public string Descricao
-		{
-			get
-			{
-				return this._Descricao;
-			}
-			set
-			{
-				if ((this._Descricao != value))
-				{
-					this.OnDescricaoChanging(value);
-					this.SendPropertyChanging();
-					this._Descricao = value;
-					this.SendPropertyChanged("Descricao");
-					this.OnDescricaoChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDPaciente", DbType="Int NOT NULL")]
-		public int IDPaciente
-		{
-			get
-			{
-				return this._IDPaciente;
-			}
-			set
-			{
-				if ((this._IDPaciente != value))
-				{
-					if (this._Paciente.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnIDPacienteChanging(value);
-					this.SendPropertyChanging();
-					this._IDPaciente = value;
-					this.SendPropertyChanged("IDPaciente");
-					this.OnIDPacienteChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Avaliacao", Storage="_Paciente", ThisKey="IDPaciente", OtherKey="IDPaciente", IsForeignKey=true)]
-		public Paciente Paciente
-		{
-			get
-			{
-				return this._Paciente.Entity;
-			}
-			set
-			{
-				Paciente previousValue = this._Paciente.Entity;
-				if (((previousValue != value) 
-							|| (this._Paciente.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Paciente.Entity = null;
-						previousValue.Avaliacaos.Remove(this);
-					}
-					this._Paciente.Entity = value;
-					if ((value != null))
-					{
-						value.Avaliacaos.Add(this);
-						this._IDPaciente = value.IDPaciente;
-					}
-					else
-					{
-						this._IDPaciente = default(int);
-					}
-					this.SendPropertyChanged("Paciente");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 	
@@ -1825,6 +1475,356 @@ namespace ConsultorioFernandaHackLib
 				{
 					this._CPFColaborador = value;
 				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evolucao")]
+	public partial class Evolucao : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDEvolucao;
+		
+		private System.DateTime _DataEvolucao;
+		
+		private string _Descricao;
+		
+		private int _IDPaciente;
+		
+		private EntityRef<Paciente> _Paciente;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDEvolucaoChanging(int value);
+    partial void OnIDEvolucaoChanged();
+    partial void OnDataEvolucaoChanging(System.DateTime value);
+    partial void OnDataEvolucaoChanged();
+    partial void OnDescricaoChanging(string value);
+    partial void OnDescricaoChanged();
+    partial void OnIDPacienteChanging(int value);
+    partial void OnIDPacienteChanged();
+    #endregion
+		
+		public Evolucao()
+		{
+			this._Paciente = default(EntityRef<Paciente>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDEvolucao", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IDEvolucao
+		{
+			get
+			{
+				return this._IDEvolucao;
+			}
+			set
+			{
+				if ((this._IDEvolucao != value))
+				{
+					this.OnIDEvolucaoChanging(value);
+					this.SendPropertyChanging();
+					this._IDEvolucao = value;
+					this.SendPropertyChanged("IDEvolucao");
+					this.OnIDEvolucaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataEvolucao", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime DataEvolucao
+		{
+			get
+			{
+				return this._DataEvolucao;
+			}
+			set
+			{
+				if ((this._DataEvolucao != value))
+				{
+					this.OnDataEvolucaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataEvolucao = value;
+					this.SendPropertyChanged("DataEvolucao");
+					this.OnDataEvolucaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Descricao
+		{
+			get
+			{
+				return this._Descricao;
+			}
+			set
+			{
+				if ((this._Descricao != value))
+				{
+					this.OnDescricaoChanging(value);
+					this.SendPropertyChanging();
+					this._Descricao = value;
+					this.SendPropertyChanged("Descricao");
+					this.OnDescricaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDPaciente", DbType="Int NOT NULL")]
+		public int IDPaciente
+		{
+			get
+			{
+				return this._IDPaciente;
+			}
+			set
+			{
+				if ((this._IDPaciente != value))
+				{
+					if (this._Paciente.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDPacienteChanging(value);
+					this.SendPropertyChanging();
+					this._IDPaciente = value;
+					this.SendPropertyChanged("IDPaciente");
+					this.OnIDPacienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Evolucao", Storage="_Paciente", ThisKey="IDPaciente", OtherKey="IDPaciente", IsForeignKey=true)]
+		public Paciente Paciente
+		{
+			get
+			{
+				return this._Paciente.Entity;
+			}
+			set
+			{
+				Paciente previousValue = this._Paciente.Entity;
+				if (((previousValue != value) 
+							|| (this._Paciente.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Paciente.Entity = null;
+						previousValue.Evolucaos.Remove(this);
+					}
+					this._Paciente.Entity = value;
+					if ((value != null))
+					{
+						value.Evolucaos.Add(this);
+						this._IDPaciente = value.IDPaciente;
+					}
+					else
+					{
+						this._IDPaciente = default(int);
+					}
+					this.SendPropertyChanged("Paciente");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Avaliacao")]
+	public partial class Avaliacao : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _IDAvaliacao;
+		
+		private System.DateTime _DataAvaliacao;
+		
+		private string _Descricao;
+		
+		private int _IDPaciente;
+		
+		private EntityRef<Paciente> _Paciente;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIDAvaliacaoChanging(int value);
+    partial void OnIDAvaliacaoChanged();
+    partial void OnDataAvaliacaoChanging(System.DateTime value);
+    partial void OnDataAvaliacaoChanged();
+    partial void OnDescricaoChanging(string value);
+    partial void OnDescricaoChanged();
+    partial void OnIDPacienteChanging(int value);
+    partial void OnIDPacienteChanged();
+    #endregion
+		
+		public Avaliacao()
+		{
+			this._Paciente = default(EntityRef<Paciente>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDAvaliacao", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int IDAvaliacao
+		{
+			get
+			{
+				return this._IDAvaliacao;
+			}
+			set
+			{
+				if ((this._IDAvaliacao != value))
+				{
+					this.OnIDAvaliacaoChanging(value);
+					this.SendPropertyChanging();
+					this._IDAvaliacao = value;
+					this.SendPropertyChanged("IDAvaliacao");
+					this.OnIDAvaliacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataAvaliacao", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime DataAvaliacao
+		{
+			get
+			{
+				return this._DataAvaliacao;
+			}
+			set
+			{
+				if ((this._DataAvaliacao != value))
+				{
+					this.OnDataAvaliacaoChanging(value);
+					this.SendPropertyChanging();
+					this._DataAvaliacao = value;
+					this.SendPropertyChanged("DataAvaliacao");
+					this.OnDataAvaliacaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Descricao", DbType="VarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string Descricao
+		{
+			get
+			{
+				return this._Descricao;
+			}
+			set
+			{
+				if ((this._Descricao != value))
+				{
+					this.OnDescricaoChanging(value);
+					this.SendPropertyChanging();
+					this._Descricao = value;
+					this.SendPropertyChanged("Descricao");
+					this.OnDescricaoChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDPaciente", DbType="Int NOT NULL")]
+		public int IDPaciente
+		{
+			get
+			{
+				return this._IDPaciente;
+			}
+			set
+			{
+				if ((this._IDPaciente != value))
+				{
+					if (this._Paciente.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnIDPacienteChanging(value);
+					this.SendPropertyChanging();
+					this._IDPaciente = value;
+					this.SendPropertyChanged("IDPaciente");
+					this.OnIDPacienteChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Paciente_Avaliacao", Storage="_Paciente", ThisKey="IDPaciente", OtherKey="IDPaciente", IsForeignKey=true)]
+		public Paciente Paciente
+		{
+			get
+			{
+				return this._Paciente.Entity;
+			}
+			set
+			{
+				Paciente previousValue = this._Paciente.Entity;
+				if (((previousValue != value) 
+							|| (this._Paciente.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Paciente.Entity = null;
+						previousValue.Avaliacaos.Remove(this);
+					}
+					this._Paciente.Entity = value;
+					if ((value != null))
+					{
+						value.Avaliacaos.Add(this);
+						this._IDPaciente = value.IDPaciente;
+					}
+					else
+					{
+						this._IDPaciente = default(int);
+					}
+					this.SendPropertyChanged("Paciente");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}

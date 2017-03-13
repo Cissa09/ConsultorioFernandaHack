@@ -19,7 +19,7 @@ namespace ConsultorioFernandaHack
         public int ID;
         public DataGridViewRow Linha;
         public ConsultorioFernandaHackLib.PacienteDAL xPaciente;
-        private ConsultorioFernandaHackLib.Evolucao xEvolucao;
+        private ConsultorioFernandaHackLib.Avaliacao xAvaliacao;
         private bool _salvo = false;
         public List<string> listaArqExcluidos;
 
@@ -34,37 +34,36 @@ namespace ConsultorioFernandaHack
         {
             InitializeComponent();
         }
-
+ 
         //LOAD
-        private void frmCadEvolucao_Load(object sender, EventArgs e)
+        private void frmCadAvaliacao_Load(object sender, EventArgs e)
         {
             if (this.TipoOperacao == 1)
             {
-                this.Text = "Nova Evolução";
-                xEvolucao = new ConsultorioFernandaHackLib.Evolucao();
-                
+                this.Text = "Nova Avaliação";
+                xAvaliacao = new ConsultorioFernandaHackLib.Avaliacao();
                 dtCadastro.Value = DateTime.Now.Date;
             }
             else
             {
-                xEvolucao = ((from evo in xPaciente.Paciente.Evolucaos
-                              where evo.IDEvolucao == this.ID
-                              select evo).First());
+                xAvaliacao = ((from ava in xPaciente.Paciente.Avaliacaos
+                               where ava.IDAvaliacao == this.ID
+                               select ava).First());
 
-                this.Text = "Alterando Evolução ";
-                dtCadastro.Value = xEvolucao.DataEvolucao;
-                txtDescricao.Text = xEvolucao.Descricao;
+                this.Text = "Alterando Avaliação ";
+                dtCadastro.Value = xAvaliacao.DataAvaliacao;
+                txtDescricao.Text = xAvaliacao.Descricao;
 
             }
         }
 
         //SALVAR
-        private void btnSalvarEvolucao_Click(object sender, EventArgs e)
+        private void btnSalvarAvaliacao_Click(object sender, EventArgs e)
         {
-            xEvolucao.DataEvolucao = dtCadastro.Value;
-            xEvolucao.Descricao = txtDescricao.Text;
-            this.xPaciente.Paciente.Evolucaos.Add(xEvolucao);
-            this.xPaciente.InsereEvolucao(xEvolucao);                        
-        }              
+            xAvaliacao.DataAvaliacao = dtCadastro.Value;
+            xAvaliacao.Descricao = txtDescricao.Text;
+            this.xPaciente.Paciente.Avaliacaos.Add(xAvaliacao);
+            this.xPaciente.InsereAvaliacao(xAvaliacao);
+        }
     }
 }
