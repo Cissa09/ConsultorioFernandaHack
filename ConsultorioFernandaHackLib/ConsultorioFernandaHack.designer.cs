@@ -112,14 +112,6 @@ namespace ConsultorioFernandaHackLib
 			}
 		}
 		
-		public System.Data.Linq.Table<vwSessaoHistPgto> vwSessaoHistPgtos
-		{
-			get
-			{
-				return this.GetTable<vwSessaoHistPgto>();
-			}
-		}
-		
 		public System.Data.Linq.Table<Evolucao> Evolucaos
 		{
 			get
@@ -133,6 +125,14 @@ namespace ConsultorioFernandaHackLib
 			get
 			{
 				return this.GetTable<Avaliacao>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vwSessaoHistPgto> vwSessaoHistPgtos
+		{
+			get
+			{
+				return this.GetTable<vwSessaoHistPgto>();
 			}
 		}
 	}
@@ -1272,213 +1272,6 @@ namespace ConsultorioFernandaHackLib
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwSessaoHistPgto")]
-	public partial class vwSessaoHistPgto
-	{
-		
-		private int _IDSessao;
-		
-		private int _IDColaborador;
-		
-		private int _IDPaciente;
-		
-		private System.DateTime _DataSessao;
-		
-		private decimal _Valor;
-		
-		private bool _Pago;
-		
-		private string _NomePaciente;
-		
-		private string _CPFPaciente;
-		
-		private decimal _PorcComissao;
-		
-		private string _NomeColaborador;
-		
-		private string _CPFColaborador;
-		
-		public vwSessaoHistPgto()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDSessao", DbType="Int NOT NULL")]
-		public int IDSessao
-		{
-			get
-			{
-				return this._IDSessao;
-			}
-			set
-			{
-				if ((this._IDSessao != value))
-				{
-					this._IDSessao = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDColaborador", DbType="Int NOT NULL")]
-		public int IDColaborador
-		{
-			get
-			{
-				return this._IDColaborador;
-			}
-			set
-			{
-				if ((this._IDColaborador != value))
-				{
-					this._IDColaborador = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDPaciente", DbType="Int NOT NULL")]
-		public int IDPaciente
-		{
-			get
-			{
-				return this._IDPaciente;
-			}
-			set
-			{
-				if ((this._IDPaciente != value))
-				{
-					this._IDPaciente = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataSessao", DbType="SmallDateTime NOT NULL")]
-		public System.DateTime DataSessao
-		{
-			get
-			{
-				return this._DataSessao;
-			}
-			set
-			{
-				if ((this._DataSessao != value))
-				{
-					this._DataSessao = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="Decimal(5,2) NOT NULL")]
-		public decimal Valor
-		{
-			get
-			{
-				return this._Valor;
-			}
-			set
-			{
-				if ((this._Valor != value))
-				{
-					this._Valor = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pago", DbType="Bit NOT NULL")]
-		public bool Pago
-		{
-			get
-			{
-				return this._Pago;
-			}
-			set
-			{
-				if ((this._Pago != value))
-				{
-					this._Pago = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomePaciente", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string NomePaciente
-		{
-			get
-			{
-				return this._NomePaciente;
-			}
-			set
-			{
-				if ((this._NomePaciente != value))
-				{
-					this._NomePaciente = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPFPaciente", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
-		public string CPFPaciente
-		{
-			get
-			{
-				return this._CPFPaciente;
-			}
-			set
-			{
-				if ((this._CPFPaciente != value))
-				{
-					this._CPFPaciente = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PorcComissao", DbType="Decimal(5,2) NOT NULL")]
-		public decimal PorcComissao
-		{
-			get
-			{
-				return this._PorcComissao;
-			}
-			set
-			{
-				if ((this._PorcComissao != value))
-				{
-					this._PorcComissao = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomeColaborador", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
-		public string NomeColaborador
-		{
-			get
-			{
-				return this._NomeColaborador;
-			}
-			set
-			{
-				if ((this._NomeColaborador != value))
-				{
-					this._NomeColaborador = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPFColaborador", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
-		public string CPFColaborador
-		{
-			get
-			{
-				return this._CPFColaborador;
-			}
-			set
-			{
-				if ((this._CPFColaborador != value))
-				{
-					this._CPFColaborador = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Evolucao")]
 	public partial class Evolucao : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1825,6 +1618,213 @@ namespace ConsultorioFernandaHackLib
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vwSessaoHistPgto")]
+	public partial class vwSessaoHistPgto
+	{
+		
+		private int _IDSessao;
+		
+		private int _IDColaborador;
+		
+		private int _IDPaciente;
+		
+		private System.DateTime _DataSessao;
+		
+		private decimal _Valor;
+		
+		private bool _Pago;
+		
+		private string _NomePaciente;
+		
+		private string _CPFPaciente;
+		
+		private System.Nullable<decimal> _PorcComissao;
+		
+		private string _NomeColaborador;
+		
+		private string _CPFColaborador;
+		
+		public vwSessaoHistPgto()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDSessao", DbType="Int NOT NULL")]
+		public int IDSessao
+		{
+			get
+			{
+				return this._IDSessao;
+			}
+			set
+			{
+				if ((this._IDSessao != value))
+				{
+					this._IDSessao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDColaborador", DbType="Int NOT NULL")]
+		public int IDColaborador
+		{
+			get
+			{
+				return this._IDColaborador;
+			}
+			set
+			{
+				if ((this._IDColaborador != value))
+				{
+					this._IDColaborador = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IDPaciente", DbType="Int NOT NULL")]
+		public int IDPaciente
+		{
+			get
+			{
+				return this._IDPaciente;
+			}
+			set
+			{
+				if ((this._IDPaciente != value))
+				{
+					this._IDPaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DataSessao", DbType="SmallDateTime NOT NULL")]
+		public System.DateTime DataSessao
+		{
+			get
+			{
+				return this._DataSessao;
+			}
+			set
+			{
+				if ((this._DataSessao != value))
+				{
+					this._DataSessao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Valor", DbType="Decimal(5,2) NOT NULL")]
+		public decimal Valor
+		{
+			get
+			{
+				return this._Valor;
+			}
+			set
+			{
+				if ((this._Valor != value))
+				{
+					this._Valor = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Pago", DbType="Bit NOT NULL")]
+		public bool Pago
+		{
+			get
+			{
+				return this._Pago;
+			}
+			set
+			{
+				if ((this._Pago != value))
+				{
+					this._Pago = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomePaciente", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string NomePaciente
+		{
+			get
+			{
+				return this._NomePaciente;
+			}
+			set
+			{
+				if ((this._NomePaciente != value))
+				{
+					this._NomePaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPFPaciente", DbType="VarChar(20) NOT NULL", CanBeNull=false)]
+		public string CPFPaciente
+		{
+			get
+			{
+				return this._CPFPaciente;
+			}
+			set
+			{
+				if ((this._CPFPaciente != value))
+				{
+					this._CPFPaciente = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PorcComissao", DbType="Decimal(5,2)")]
+		public System.Nullable<decimal> PorcComissao
+		{
+			get
+			{
+				return this._PorcComissao;
+			}
+			set
+			{
+				if ((this._PorcComissao != value))
+				{
+					this._PorcComissao = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NomeColaborador", DbType="VarChar(150) NOT NULL", CanBeNull=false)]
+		public string NomeColaborador
+		{
+			get
+			{
+				return this._NomeColaborador;
+			}
+			set
+			{
+				if ((this._NomeColaborador != value))
+				{
+					this._NomeColaborador = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CPFColaborador", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string CPFColaborador
+		{
+			get
+			{
+				return this._CPFColaborador;
+			}
+			set
+			{
+				if ((this._CPFColaborador != value))
+				{
+					this._CPFColaborador = value;
+				}
 			}
 		}
 	}
