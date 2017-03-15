@@ -120,7 +120,7 @@
             // 
             this.txtDescricao.ForeColor = System.Drawing.Color.Black;
             this.txtDescricao.Location = new System.Drawing.Point(92, 49);
-            this.txtDescricao.MaxLength = 400;
+            this.txtDescricao.MaxLength = 0;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Size = new System.Drawing.Size(460, 231);
