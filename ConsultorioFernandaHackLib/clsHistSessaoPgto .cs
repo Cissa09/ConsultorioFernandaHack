@@ -50,7 +50,7 @@ namespace ConsultorioFernandaHackLib
         /// <param name="id">Parâmetro passado pelo construtor para carregar as propriedades do histórico da sessão</param>
         private void Retrive(int id)
         {
-            _histsessaopgto = (from hse in ctx.HistSessaoPgtos where hse.IDHistSessaoPgto == id select hse).FirstOrDefault();
+            _histsessaopgto = (from hse in ctx.HistSessaoPgtos where hse.IDSessao == id select hse).FirstOrDefault();
             if (_histsessaopgto == null)
                 _histsessaopgto = new HistSessaoPgto();
 

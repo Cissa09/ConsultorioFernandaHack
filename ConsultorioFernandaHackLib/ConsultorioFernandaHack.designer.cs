@@ -1642,7 +1642,7 @@ namespace ConsultorioFernandaHackLib
 		
 		private string _CPFPaciente;
 		
-		private System.Nullable<decimal> _PorcComissao;
+		private decimal _PorcComissao;
 		
 		private string _NomeColaborador;
 		
@@ -1780,8 +1780,8 @@ namespace ConsultorioFernandaHackLib
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PorcComissao", DbType="Decimal(5,2)")]
-		public System.Nullable<decimal> PorcComissao
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PorcComissao", DbType="Decimal(5,2) NOT NULL")]
+		public decimal PorcComissao
 		{
 			get
 			{

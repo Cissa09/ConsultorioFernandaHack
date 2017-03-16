@@ -82,7 +82,7 @@
       <Column Name="Pago" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Column Name="NomePaciente" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="CPFPaciente" Type="System.String" DbType="VarChar(20) NOT NULL" CanBeNull="false" />
-      <Column Name="PorcComissao" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="PorcComissao" Type="System.Decimal" DbType="Decimal(5,2) NOT NULL" CanBeNull="false" />
       <Column Name="NomeColaborador" Type="System.String" DbType="VarChar(150) NOT NULL" CanBeNull="false" />
       <Column Name="CPFColaborador" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
     </Type>

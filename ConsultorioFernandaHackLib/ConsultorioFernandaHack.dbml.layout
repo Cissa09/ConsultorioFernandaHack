@@ -73,10 +73,10 @@
         <classShapeMoniker Id="5c997acc-bfcd-4a4a-9f6e-d40596518c3e" />
       </nodes>
     </associationConnector>
-    <classShape Id="5b523a9e-9b1b-4792-a27c-2ac27099b73a" absoluteBounds="12.375, 1.25, 2, 2.9247054036458331">
+    <classShape Id="592232d6-b429-4f49-bb57-d81956bdae74" absoluteBounds="12.375, 1.375, 2, 2.9247054036458331">
       <DataClassMoniker Name="/ConsultorioFernandaHackDataContext/vwSessaoHistPgto" />
       <nestedChildShapes>
-        <elementListCompartment Id="2ebcd2da-3550-489c-88d4-951c43732956" absoluteBounds="12.39, 1.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="a895644e-dc38-49e9-b94a-5d19e73b4e58" absoluteBounds="12.39, 1.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
