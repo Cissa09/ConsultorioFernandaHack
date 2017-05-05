@@ -59,11 +59,22 @@ namespace ConsultorioFernandaHack
 
         //SALVAR
         private void btnSalvarAvaliacao_Click(object sender, EventArgs e)
-        {
-            xAvaliacao.DataAvaliacao = dtCadastro.Value;
-            xAvaliacao.Descricao = txtDescricao.Text;
-            this.xPaciente.Paciente.Avaliacaos.Add(xAvaliacao);
-            this.xPaciente.InsereAvaliacao(xAvaliacao);
+        {                                   
+            try
+            {
+                xAvaliacao.DataAvaliacao = dtCadastro.Value;
+                xAvaliacao.Descricao = txtDescricao.Text;
+
+                this.xPaciente.Paciente.Avaliacaos.Add(xAvaliacao);
+
+                _salvo = true;
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                ConsultorioFernandaHackLib.CUtil.MsgErro("Ocorreu um erro ao salvar sua avaliação, verifique o seu computador está conectado ao servidor!" + ex.Message);
+                return;
+            }
         }
     }
 }

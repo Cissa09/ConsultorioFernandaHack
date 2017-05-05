@@ -291,7 +291,7 @@ namespace ConsultorioFernandaHack
         //EDITA UMA AVALIAÇÃO
         private void EditaAvaliacao()
         {
-            if (GEvolucao.SelectedRows.Count > 0)
+            if (GAvaliacao.SelectedRows.Count > 0)
             {
                 frmCadAvaliacao T = new frmCadAvaliacao();
                 T.xPaciente = this.xPaciente;
@@ -303,7 +303,7 @@ namespace ConsultorioFernandaHack
                     _salvoFilho = true;
                 }
                 GAvaliacao.DataSource = null;
-                GAvaliacao.DataSource = xPaciente.Paciente.Avaliacaos.ToList();
+                GAvaliacao.DataSource = xPaciente.Paciente.Avaliacaos.ToList();              
             }
         }
 

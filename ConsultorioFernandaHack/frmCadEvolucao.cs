@@ -72,7 +72,7 @@ namespace ConsultorioFernandaHack
             }
             catch (Exception ex)
             {                
-                ConsultorioFernandaHackLib.CUtil.MsgErro("Ocorreu um erro ao carregar os dados, verifique o seu computador está conectado ao servidor!" + ex.Message);          
+                ConsultorioFernandaHackLib.CUtil.MsgErro("Ocorreu um erro ao salvar sua evolução, verifique o seu computador está conectado ao servidor!" + ex.Message);          
                 return;
             }
 

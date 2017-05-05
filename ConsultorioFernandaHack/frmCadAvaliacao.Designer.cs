@@ -123,6 +123,7 @@
             this.txtDescricao.MaxLength = 0;
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
+            this.txtDescricao.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtDescricao.Size = new System.Drawing.Size(460, 231);
             this.txtDescricao.TabIndex = 5;
             // 
